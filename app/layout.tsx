@@ -21,8 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en'>
-      <body className={`${roboto.className}`}>
-        <div className='h-screen bg-slate-900 flex flex-col max-w-6xl mx-auto cursor-pointer'>
+      <body className={`${roboto.className} bg-slate-900`}>
+        <div className='h-screen flex flex-col max-w-6xl mx-auto cursor-pointer'>
           <NoteProvider>{children}</NoteProvider>
         </div>
       </body>

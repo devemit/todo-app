@@ -1,7 +1,12 @@
-export default function SingleNote({ content }: { content: any }) {
+import { Button } from './ui/button';
+
+export default function SingleNote({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <div className='flex items-center bg-green-100 rounded-md w-full'>
-      <p className='text-slate-800 px-3 font-bold'>{content}</p>
-    </div>
+    <div className='bg-green-100 p-5 rounded-2xl w-full'>{children}</div>
+    // fix style
   );
 }

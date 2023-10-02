@@ -33,10 +33,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
-
 For this project we will use the following tools:
 1.React context api
 2.Tailwind CSS
 3.Shadcn UI we'll take input,hover card?,button
 4.React Icons
 
+Functionalities
+
+- Add note
+- Edit note
+- Delete note

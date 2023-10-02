@@ -2,8 +2,6 @@
 import { Note } from '@/types';
 import { useNoteContext } from '@/context/note-context';
 import SingleNote from './single-note';
-import { Button } from './ui/button';
-import Controls from './controls';
 
 export default function NoteList() {
   const { notes, deleteNote } = useNoteContext();
@@ -12,20 +10,27 @@ export default function NoteList() {
     deleteNote(id);
   }
   return (
-    <main>
-      <Controls />
-      <section className='flex flex-col my-2'>
+    <main className='flex flex-col w-full h-full flex-1'>
+      <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
         {notes.map((note: Note) => {
           return (
-            <div key={note.id} className='flex justify-between my-1 gap-1'>
-              <SingleNote content={note.content} />
-              <Button
-                variant={'destructive'}
-                size={'sm'}
-                onClick={() => handleDeleteNote(note.id)}
-              >
-                Clear Note
-              </Button>
+            <div key={note.id}>
+              <SingleNote>
+                <div className='flex justify-between items-center gap-4'>
+                  <p className='font-bold text-slate-900 text-2xl'>
+                    {note.content}
+                  </p>
+                  <span
+                    className='font-extrabold'
+                    onClick={() => handleDeleteNote(note.id)}
+                  >
+                    x
+                  </span>
+                </div>
+                <h1 className='text-slate-600 font-bold text-sm'>
+                  {note.title}
+                </h1>
+              </SingleNote>
             </div>
           );
         })}

@@ -23,9 +23,10 @@ export const NoteProvider: React.FC<{ children: ReactNode }> = ({
 
   // Define functions for adding, editing, and deleting notes
 
-  function addNote(content: string) {
+  function addNote(content: string, title: string) {
     const newNote: Note = {
       id: nextId,
+      title: title,
       content: content,
     };
     setNotes([...notes, newNote]);

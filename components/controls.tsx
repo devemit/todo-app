@@ -1,27 +1,33 @@
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
+import { Textarea } from './ui/textarea';
 import { useNoteContext } from '@/context/note-context';
 
 export default function Controls() {
   const { addNote } = useNoteContext();
-  const [noteText, setnoteText] = useState('');
+  const [noteTitle, setnoteTitle] = useState('');
+  const [noteContent, setnoteContent] = useState('');
 
   function handleAddNote() {
-    if (noteText.trim() !== '') {
-      addNote(noteText);
-      setnoteText('');
+    if (noteContent.trim() !== '' && noteTitle.trim() !== '') {
+      addNote(noteTitle, noteContent);
+      setnoteTitle('');
+      setnoteContent('');
     }
   }
 
   return (
-    <div className='flex gap-2'>
+    <div className='flex flex-col gap-2'>
       <Input
-        placeholder='Notify yourself'
-        value={noteText}
-        onChange={(e) => {
-          setnoteText(e.target.value);
-        }}
+        placeholder='Note title'
+        value={noteTitle}
+        onChange={(e) => setnoteTitle(e.target.value)}
+      />
+      <Textarea
+        placeholder='Note content'
+        value={noteContent}
+        onChange={(e) => setnoteContent(e.target.value)}
       />
       <Button size={'sm'} onClick={handleAddNote}>
         Add Todo

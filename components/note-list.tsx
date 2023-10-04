@@ -36,9 +36,7 @@ export default function NoteList() {
           );
         })}
         {notes.length === 0 && (
-          <h2 className='text-white text-center text-xl'>
-            You don't have any note today.
-          </h2>
+          <h2 className='text-white text-center text-xl'>No notes to show.</h2>
         )}
       </section>
     </main>

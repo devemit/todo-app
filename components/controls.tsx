@@ -30,7 +30,7 @@ export default function Controls() {
         onChange={(e) => setnoteContent(e.target.value)}
       />
       <Button size={'sm'} onClick={handleAddNote}>
-        Add Todo
+        Notify
       </Button>
     </div>
   );

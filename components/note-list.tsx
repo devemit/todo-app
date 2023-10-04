@@ -9,6 +9,7 @@ export default function NoteList() {
   function handleDeleteNote(id: number) {
     deleteNote(id);
   }
+
   return (
     <main className='flex flex-col w-full h-full flex-1'>
       <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
@@ -17,7 +18,7 @@ export default function NoteList() {
             <div key={note.id}>
               <SingleNote>
                 <div className='flex justify-between items-center gap-4'>
-                  <p className='font-bold text-slate-900 text-2xl'>
+                  <p className='font-bold text-slate-900 text-2xl truncate'>
                     {note.content}
                   </p>
                   <span
@@ -35,7 +36,9 @@ export default function NoteList() {
           );
         })}
         {notes.length === 0 && (
-          <h1 className='text-white'>You dont have added notes!</h1>
+          <h2 className='text-white text-center text-xl'>
+            You don't have any note today.
+          </h2>
         )}
       </section>
     </main>

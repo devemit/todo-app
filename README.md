@@ -44,3 +44,9 @@ Functionalities
 - Add note
 - Edit note
 - Delete note
+
+<!-- to fix  -->
+
+each note needs to be different color
+fix the responsivness
+fix editing the notes

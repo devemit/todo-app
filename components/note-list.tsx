@@ -12,7 +12,7 @@ export default function NoteList() {
 
   return (
     <main className='flex flex-col w-full h-full flex-1'>
-      <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2'>
+      <section className='grid grid-cols-1 md:grid-cols-2 gap-2'>
         {notes.map((note: Note) => {
           return (
             <div key={note.id}>

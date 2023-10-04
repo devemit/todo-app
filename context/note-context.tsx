@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 import { Note, NoteContextType } from '@/types';
+import { useEffect } from 'react';
 
 const NoteContext = createContext<NoteContextType | undefined>(undefined);
 
@@ -21,7 +22,20 @@ export const NoteProvider: React.FC<{ children: ReactNode }> = ({
   const [notes, setNotes] = useState<Note[]>([]);
   const [nextId, setNextId] = useState<number>(0);
 
-  // Define functions for adding, editing, and deleting notes
+  useEffect(() => {
+    // Load notes from localStorage when the component mounts
+    const storedNotes = localStorage.getItem('notes');
+    if (storedNotes) {
+      setNotes(JSON.parse(storedNotes));
+      setNextId(
+        Math.max(...JSON.parse(storedNotes).map((note: Note) => note.id)) + 1
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('notes', JSON.stringify(notes));
+  }, [notes]);
 
   function addNote(content: string, title: string) {
     const newNote: Note = {

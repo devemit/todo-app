@@ -12,13 +12,13 @@ export default function NoteList() {
 
   return (
     <main className='flex flex-col w-full h-full flex-1'>
-      <section className='grid grid-cols-1 md:grid-cols-2 gap-2'>
-        {notes.map((note: Note) => {
+      <section className='grid grid-cols-1 gap-2'>
+        {notes.map((note: Note, index: number) => {
           return (
-            <div key={note.id}>
-              <SingleNote>
+            <div key={index}>
+              <SingleNote color={note.color}>
                 <div className='flex justify-between items-center gap-4'>
-                  <p className='font-bold text-slate-900 text-2xl truncate'>
+                  <p className='font-bold text-slate-800 text-xl truncate'>
                     {note.content}
                   </p>
                   <span
@@ -28,7 +28,7 @@ export default function NoteList() {
                     x
                   </span>
                 </div>
-                <h1 className='text-slate-600 font-bold text-sm'>
+                <h1 className='text-slate-900 font-bold text-sm my-5'>
                   {note.title}
                 </h1>
               </SingleNote>

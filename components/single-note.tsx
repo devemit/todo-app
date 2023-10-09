@@ -1,7 +1,16 @@
 export default function SingleNote({
   children,
+  color,
 }: {
   children: React.ReactNode;
+  color: string;
 }) {
-  return <div className='bg-green-100 p-5 rounded-2xl w-full'>{children}</div>;
+  return (
+    <div
+      style={{ backgroundColor: `${color}` }}
+      className='p-5 rounded-2xl w-full overflow-hidden'
+    >
+      {children}
+    </div>
+  );
 }

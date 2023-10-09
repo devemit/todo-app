@@ -22,6 +22,9 @@ export const NoteProvider: React.FC<{ children: ReactNode }> = ({
   const [notes, setNotes] = useState<Note[]>([]);
   const [nextId, setNextId] = useState<number>(0);
 
+  const noteColors = ['#FF5733', '#33FF57', '#3384FF', '#FF33F1', '#FFE933'];
+  const colorIndex = notes.length % noteColors.length;
+
   useEffect(() => {
     // Load notes from localStorage when the component mounts
     const storedNotes = localStorage.getItem('notes');
@@ -42,6 +45,7 @@ export const NoteProvider: React.FC<{ children: ReactNode }> = ({
       id: nextId,
       title: title,
       content: content,
+      color: noteColors[colorIndex],
     };
     setNotes([...notes, newNote]);
     setNextId((prev: number) => prev + 1);

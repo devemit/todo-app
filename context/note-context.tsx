@@ -25,20 +25,20 @@ export const NoteProvider: React.FC<{ children: ReactNode }> = ({
   const noteColors = ['#FF5733', '#33FF57', '#3384FF', '#FF33F1', '#FFE933'];
   const colorIndex = notes.length % noteColors.length;
 
-  useEffect(() => {
-    // Load notes from localStorage when the component mounts
-    const storedNotes = localStorage.getItem('notes');
-    if (storedNotes) {
-      setNotes(JSON.parse(storedNotes));
-      setNextId(
-        Math.max(...JSON.parse(storedNotes).map((note: Note) => note.id)) + 1
-      );
-    }
-  }, []);
+  // useEffect(() => {
+  //   // Load notes from localStorage when the component mounts
+  //   const storedNotes = localStorage.getItem('notes');
+  //   if (storedNotes) {
+  //     setNotes(JSON.parse(storedNotes));
+  //     setNextId(
+  //       Math.max(...JSON.parse(storedNotes).map((note: Note) => note.id)) + 1
+  //     );
+  //   }
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem('notes', JSON.stringify(notes));
-  }, [notes]);
+  // useEffect(() => {
+  //   localStorage.setItem('notes', JSON.stringify(notes));
+  // }, [notes]);
 
   function addNote(content: string, title: string) {
     const newNote: Note = {
@@ -49,10 +49,13 @@ export const NoteProvider: React.FC<{ children: ReactNode }> = ({
     };
     setNotes([...notes, newNote]);
     setNextId((prev: number) => prev + 1);
+    // localStorage.setItem('notes', JSON.stringify([...notes, newNote]));
   }
 
   function deleteNote(id: number) {
-    setNotes(notes.filter((n) => n.id !== id));
+    const updatedNotes = notes.filter((n) => n.id !== id);
+    setNotes(updatedNotes);
+    // localStorage.setItem('notes', JSON.stringify(updatedNotes));
   }
 
   return (
